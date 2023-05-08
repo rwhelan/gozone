@@ -1026,6 +1026,12 @@ func (s *Scanner) Next(outrecord *Record) error {
 	}
 
 	record.Origin = s.origin
+	for i, d := range record.Data {
+		if d == "@" {
+			record.Data[i] = record.Origin
+		}
+	}
+
 	*outrecord = record
 	return nil
 }
