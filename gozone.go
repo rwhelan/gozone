@@ -330,6 +330,7 @@ type Record struct {
 	Type       RecordType
 	Data       []string
 	Comment    string
+	Origin     string
 }
 
 func (r Record) String() string {
@@ -1024,6 +1025,7 @@ func (s *Scanner) Next(outrecord *Record) error {
 		continue
 	}
 
+	record.Origin = s.origin
 	*outrecord = record
 	return nil
 }
